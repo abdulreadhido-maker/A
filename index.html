@@ -3,314 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pro Amazon Store</title>
-
-<style>
-
-/* ===== RESET ===== */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
-
-body{
-background:#0a0f1c;
-color:white;
-}
-
-/* ===== HEADER ===== */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-background:#111827;
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.logo{
-color:#38bdf8;
-font-size:20px;
-font-weight:bold;
-}
-
-.cart-btn{
-background:#22c55e;
-padding:10px 15px;
-border-radius:10px;
-cursor:pointer;
-}
-
-/* ===== HERO ===== */
-.hero{
-text-align:center;
-padding:50px 20px;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546');
-background-size:cover;
-background-position:center;
-}
-
-.hero h1{
-font-size:40px;
-color:#38bdf8;
-}
-
-/* ===== PRODUCTS ===== */
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-padding:20px;
-}
-
-.card{
-background:#111827;
-border-radius:15px;
-overflow:hidden;
-transition:0.3s;
-}
-
-.card:hover{
-transform:scale(1.03);
-}
-
-.card img{
-width:100%;
-height:150px;
-object-fit:cover;
-}
-
-.card-body{
-padding:10px;
-text-align:center;
-}
-
-.price{
-color:#22c55e;
-margin:5px 0;
-}
-
-button{
-width:100%;
-padding:10px;
-border:none;
-background:#38bdf8;
-color:black;
-cursor:pointer;
-border-radius:10px;
-}
-
-/* ===== CART ===== */
-#cartBox{
-position:fixed;
-right:10px;
-top:70px;
-width:320px;
-background:#111827;
-padding:15px;
-border-radius:15px;
-display:none;
-max-height:400px;
-overflow:auto;
-}
-
-.item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin:8px 0;
-font-size:13px;
-}
-
-.small{
-padding:3px 6px;
-background:#374151;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-/* ===== CHECKOUT ===== */
-#checkout{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-color:black;
-padding:20px;
-border-radius:15px;
-display:none;
-width:300px;
-}
-
-/* ===== NOTIFY ===== */
-#notify{
-position:fixed;
-top:20px;
-right:20px;
-background:#22c55e;
-padding:10px 15px;
-border-radius:10px;
-display:none;
-}
-
-</style>
+<title>Mega Store</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header>
-<div class="logo">🛒 Pro Store</div>
-<div class="cart-btn" onclick="toggleCart()">
-السلة 🛒 (<span id="count">0</span>)
+<!-- LOADING -->
+<div id="loading">
+  <h1>Mega Store</h1>
+  <div class="loader"></div>
 </div>
+
+<!-- LOGIN -->
+<div id="loginBox">
+  <div class="loginCard">
+    <h2>Admin Login</h2>
+    <input id="pass" type="password" placeholder="Password">
+    <button onclick="login()">دخول</button>
+  </div>
+</div>
+
+<header>
+  <div class="logo" onclick="showPage('home')">Mega Store</div>
+
+  <nav>
+    <a onclick="showPage('home')">الرئيسية</a>
+    <a onclick="showPage('products')">المنتجات</a>
+    <a onclick="showPage('adminPanel')">لوحة الإدارة</a>
+  </nav>
+
+  <div class="right">
+    <input class="search" placeholder="ابحث...">
+    <div class="cart" onclick="toggleCart()">
+      🛒 <span id="cartCount">0</span>
+    </div>
+  </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-<h1>متجر احترافي كامل</h1>
-<p>تجربة تسوق حديثة مثل Amazon</p>
-</section>
+<div class="container">
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <section class="hero">
+    <h1>متجر احترافي</h1>
+    <p>تجربة تسوق حديثة</p>
+    <button class="btn" onclick="showPage('products')">ابدأ</button>
+  </section>
+</div>
 
 <!-- PRODUCTS -->
-<div class="products">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<div class="card-body">
-<h3>iPhone 15</h3>
-<div class="price">4500 ريال</div>
-<button onclick="add('iPhone 15',4500)">إضافة</button>
-</div>
+<div id="products" class="page">
+  <h2 class="section-title">المنتجات</h2>
+  <div class="grid" id="productList"></div>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc">
-<div class="card-body">
-<h3>MacBook Pro</h3>
-<div class="price">8500 ريال</div>
-<button onclick="add('MacBook Pro',8500)">إضافة</button>
-</div>
-</div>
+<!-- PRODUCT PAGE -->
+<div id="productPage"></div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<div class="card-body">
-<h3>PlayStation 5</h3>
-<div class="price">2200 ريال</div>
-<button onclick="add('PS5',2200)">إضافة</button>
-</div>
+<!-- ADMIN -->
+<div id="adminPanel" class="page">
+  <h2 class="section-title">لوحة الإدارة</h2>
+
+  <div class="adminBox">
+    <input id="name" placeholder="اسم المنتج">
+    <input id="price" placeholder="السعر">
+    <input id="img" placeholder="الصورة">
+    <button onclick="addProduct()">إضافة</button>
+
+    <div id="adminList"></div>
+  </div>
 </div>
 
 </div>
 
 <!-- CART -->
-<div id="cartBox">
-<h3>🧺 السلة</h3>
-<div id="items"></div>
-
-<h3>الإجمالي: <span id="total">0</span> ريال</h3>
-
-<button onclick="openCheckout()">💳 الدفع</button>
+<div class="cartPanel" id="cartPanel">
+  <h2>السلة</h2>
+  <div id="cartItems"></div>
+  <button class="checkout">الدفع</button>
 </div>
 
-<!-- CHECKOUT -->
-<div id="checkout">
-<h3>إتمام الدفع</h3>
-<p>هل تريد تأكيد الطلب؟</p>
-<button onclick="pay()">تأكيد</button>
-<button onclick="closeCheckout()">إلغاء</button>
-</div>
+<footer>© 2026 Mega Store</footer>
 
-<!-- NOTIFY -->
-<div id="notify">تمت الإضافة 🛒</div>
-
-<script>
-
-let cart={};
-
-function add(name,price){
-
-if(!cart[name]){
-cart[name]={qty:1,price:price};
-}else{
-cart[name].qty++;
-}
-
-update();
-notify();
-}
-
-function update(){
-
-let items=document.getElementById("items");
-items.innerHTML="";
-
-let total=0;
-let count=0;
-
-for(let i in cart){
-
-let item=cart[i];
-total += item.price * item.qty;
-count += item.qty;
-
-items.innerHTML += `
-<div class="item">
-${i}
-<button class="small" onclick="minus('${i}')">-</button>
-${item.qty}
-<button class="small" onclick="plus('${i}')">+</button>
-<button class="small" onclick="removeItem('${i}')">❌</button>
-</div>
-`;
-}
-
-document.getElementById("total").innerText=total;
-document.getElementById("count").innerText=count;
-}
-
-function plus(i){cart[i].qty++; update();}
-function minus(i){cart[i].qty>1 ? cart[i].qty-- : delete cart[i]; update();}
-function removeItem(i){delete cart[i]; update();}
-
-function toggleCart(){
-let c=document.getElementById("cartBox");
-c.style.display = c.style.display==="block" ? "none" : "block";
-}
-
-function openCheckout(){
-document.getElementById("checkout").style.display="block";
-}
-
-function closeCheckout(){
-document.getElementById("checkout").style.display="none";
-}
-
-function pay(){
-alert("تم الدفع بنجاح 🎉");
-cart={};
-update();
-closeCheckout();
-}
-
-function notify(){
-let n=document.getElementById("notify");
-n.style.display="block";
-setTimeout(()=>n.style.display="none",1200);
-}
-
-update();
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
