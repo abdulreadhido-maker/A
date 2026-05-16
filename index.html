@@ -1,56 +1,21 @@
-<!DOCTYPE html>
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mega Store</title>
+<title>Mega Tech Store</title>
 
 <style>
 
 /* ===== BODY ===== */
-
 body{
 margin:0;
 font-family:Arial;
-background:#0f172a;
+background:#0b1220;
 color:white;
 overflow-x:hidden;
 }
 
-/* ===== LOADING ===== */
-
-#loading{
-position:fixed;
-width:100%;
-height:100%;
-background:#020617;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9999;
-transition:1s;
-}
-
-.loader{
-width:70px;
-height:70px;
-border:6px solid #1e293b;
-border-top:6px solid #38bdf8;
-border-radius:50%;
-animation:spin 1s linear infinite;
-margin-top:20px;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
 /* ===== HEADER ===== */
-
 header{
 position:sticky;
 top:0;
@@ -58,20 +23,16 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 25px;
-background:#111827;
-box-shadow:0 5px 20px rgba(0,0,0,0.4);
+background:#0f172a;
+box-shadow:0 5px 20px rgba(0,0,0,0.5);
 z-index:1000;
 }
 
-/* ===== LOGO ===== */
-
 .logo{
-font-size:28px;
+font-size:24px;
 font-weight:bold;
 color:#38bdf8;
 }
-
-/* ===== NAV ===== */
 
 nav{
 display:flex;
@@ -81,113 +42,71 @@ gap:15px;
 nav a{
 color:white;
 text-decoration:none;
+font-size:14px;
 transition:0.3s;
-font-size:15px;
 }
 
 nav a:hover{
 color:#38bdf8;
 }
 
-/* ===== RIGHT ===== */
-
-.right{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
 /* ===== SEARCH ===== */
-
 .search{
-padding:10px;
-border:none;
+padding:8px;
 border-radius:10px;
+border:none;
 outline:none;
-width:220px;
+width:180px;
 }
 
 /* ===== CART ===== */
-
 .cart{
 background:#38bdf8;
-padding:10px 15px;
-border-radius:12px;
-font-weight:bold;
+padding:8px 12px;
+border-radius:10px;
 color:black;
+font-weight:bold;
 }
 
 /* ===== HERO ===== */
-
 .hero{
-height:85vh;
+height:80vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 text-align:center;
 padding:20px;
 
 background:
 linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1974');
+url('https://images.unsplash.com/photo-1518770660439-4636190af475');
 
 background-size:cover;
 background-position:center;
 }
 
-/* ===== TITLE ===== */
-
 .hero h1{
-font-size:70px;
+font-size:60px;
 margin:0;
-
-background:linear-gradient(90deg,#38bdf8,#22c55e);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-animation:glow 3s infinite alternate;
+color:#38bdf8;
 }
-
-/* ===== GLOW ===== */
-
-@keyframes glow{
-
-from{
-filter:drop-shadow(0 0 5px #38bdf8);
-}
-
-to{
-filter:drop-shadow(0 0 20px #22c55e);
-}
-
-}
-
-/* ===== TEXT ===== */
 
 .hero p{
-font-size:20px;
-color:#d1d5db;
-max-width:700px;
-line-height:1.7;
+max-width:600px;
+color:#cbd5e1;
+line-height:1.6;
 }
-
-/* ===== BUTTON ===== */
 
 .btn{
 margin-top:20px;
-padding:15px 30px;
+padding:12px 25px;
 border:none;
-border-radius:15px;
-font-size:18px;
+border-radius:10px;
 cursor:pointer;
 font-weight:bold;
-
-background:linear-gradient(90deg,#38bdf8,#22c55e);
-
-color:white;
-
+background:#38bdf8;
+color:black;
 transition:0.3s;
 }
 
@@ -195,175 +114,193 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* ===== FEATURES ===== */
-
-.features{
+/* ===== PRODUCTS ===== */
+.products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:20px;
-padding:50px 30px;
+padding:40px;
 }
 
-/* ===== BOX ===== */
-
-.box{
-background:#1e293b;
-padding:30px;
-border-radius:20px;
+.card{
+background:#111827;
+padding:15px;
+border-radius:15px;
 text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
 transition:0.3s;
 }
 
-.box:hover{
-transform:translateY(-10px);
+.card:hover{
+transform:translateY(-8px);
 }
 
-/* ===== FOOTER ===== */
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+}
 
-footer{
-background:#111827;
-padding:30px;
-text-align:center;
-color:#94a3b8;
-margin-top:40px;
+.buy{
+margin-top:10px;
+padding:10px;
+width:100%;
+border:none;
+border-radius:10px;
+background:#22c55e;
+color:white;
+cursor:pointer;
+}
+
+/* ===== NOTIFICATION ===== */
+#notify{
+position:fixed;
+top:20px;
+right:20px;
+background:#22c55e;
+padding:15px 20px;
+border-radius:10px;
+display:none;
+font-weight:bold;
+}
+
+/* ===== CART BOX ===== */
+.cart-box{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#0f172a;
+padding:15px;
+border-radius:15px;
+width:250px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.cart-item{
+font-size:14px;
+border-bottom:1px solid #1f2937;
+padding:5px 0;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- ===== LOADING ===== -->
-
-<div id="loading">
-
-<h1>🛍️ Mega Store</h1>
-
-<div class="loader"></div>
-
-</div>
-
 <!-- ===== HEADER ===== -->
-
 <header>
-
-<div class="logo">
-Mega Store
-</div>
+<div class="logo">⚡ Mega Tech</div>
 
 <nav>
-
 <a href="#">الرئيسية</a>
-
 <a href="#">العروض</a>
-
-<a href="#">الجوالات</a>
-
+<a href="#">الأجهزة</a>
 <a href="#">Gaming</a>
-
-<a href="#">اللابتوبات</a>
-
-<a href="#">الأكثر مبيعًا</a>
-
 </nav>
 
-<div class="right">
-
-<input class="search" placeholder="ابحث عن منتج...">
-
-<div class="cart">
-🛒 0
+<div style="display:flex;gap:10px;align-items:center;">
+<input class="search" placeholder="ابحث...">
+<div class="cart">🛒 <span id="count">0</span></div>
 </div>
-
-</div>
-
 </header>
 
 <!-- ===== HERO ===== -->
-
 <section class="hero">
-
-<h1>
-أفضل متجر إلكتروني
-</h1>
-
-<p>
-
-متجر احترافي عصري مليء بالمنتجات والتجربة الممتعة
-بتصميم حديث وتأثيرات جميلة
-
-</p>
-
-<button class="btn">
-
-ابدأ التسوق
-
-</button>
-
+<h1>متجر تقني احترافي</h1>
+<p>أفضل الأجهزة الإلكترونية والتقنية الحديثة بأسعار منافسة وتجربة تسوق ممتعة</p>
+<button class="btn">ابدأ التسوق</button>
 </section>
 
-<!-- ===== FEATURES ===== -->
+<!-- ===== PRODUCTS ===== -->
+<section class="products">
 
-<section class="features">
-
-<div class="box">
-
-<h2>⚡ سرعة</h2>
-
-<p>
-موقع سريع وتجربة سلسة
-</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>iPhone 15</h3>
+<p>4500 ريال</p>
+<button class="buy" onclick="add('iPhone 15')">شراء</button>
 </div>
 
-<div class="box">
-
-<h2>🔥 عروض قوية</h2>
-
-<p>
-خصومات يومية على المنتجات
-</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>MacBook Pro</h3>
+<p>8500 ريال</p>
+<button class="buy" onclick="add('MacBook Pro')">شراء</button>
 </div>
 
-<div class="box">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
+<h3>PlayStation 5</h3>
+<p>2200 ريال</p>
+<button class="buy" onclick="add('PS5')">شراء</button>
+</div>
 
-<h2>🛍️ منتجات كثيرة</h2>
-
-<p>
-إلكترونيات وألعاب وأكثر
-</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+<h3>Nike Shoes</h3>
+<p>700 ريال</p>
+<button class="buy" onclick="add('Nike Shoes')">شراء</button>
 </div>
 
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== CART ===== -->
+<div class="cart-box">
+<h3>🛒 السلة</h3>
+<div id="cartList"></div>
+</div>
 
-<footer>
+<!-- ===== NOTIFY ===== -->
+<div id="notify">تمت الإضافة 🛒</div>
 
-© 2026 Mega Store
-
-</footer>
-
+<!-- ===== SCRIPT ===== -->
 <script>
 
-/* ===== LOADING ===== */
+let cart = {};
 
-window.onload = ()=>{
+function add(item){
+
+if(cart[item]){
+cart[item]++;
+} else {
+cart[item]=1;
+}
+
+render();
+notify();
+}
+
+function render(){
+
+let list = document.getElementById("cartList");
+list.innerHTML="";
+
+let count = 0;
+
+for(let i in cart){
+
+count += cart[i];
+
+let div = document.createElement("div");
+div.className="cart-item";
+div.innerHTML = i + " × " + cart[i];
+list.appendChild(div);
+
+}
+
+document.getElementById("count").innerText = count;
+
+}
+
+function notify(){
+let n = document.getElementById("notify");
+n.style.display="block";
 
 setTimeout(()=>{
-
-document.getElementById("loading").style.opacity="0";
-
-setTimeout(()=>{
-
-document.getElementById("loading").style.display="none";
-
-},1000);
-
-},1800);
-
+n.style.display="none";
+},1500);
 }
 
 </script>
