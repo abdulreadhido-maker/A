@@ -1,19 +1,18 @@
-<!DOCTYPE html>
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pro Store Ultimate</title>
+<title>Pro Store UI</title>
 
 <style>
 
-/* ===== BODY ===== */
+/* ===== BASE ===== */
+*{box-sizing:border-box}
 body{
 margin:0;
 font-family:Arial;
-background:#0a0f1c;
+background:#070b14;
 color:white;
-scroll-behavior:smooth;
 }
 
 /* ===== HEADER ===== */
@@ -23,9 +22,8 @@ top:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
-background:rgba(15,23,42,0.95);
-backdrop-filter:blur(10px);
+padding:15px 25px;
+background:#0b1220;
 border-bottom:1px solid #1f2937;
 z-index:1000;
 }
@@ -38,98 +36,48 @@ color:#38bdf8;
 
 nav{
 display:flex;
-gap:10px;
-flex-wrap:wrap;
+gap:15px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-padding:6px 10px;
-border-radius:8px;
-transition:0.3s;
 font-size:14px;
+opacity:0.8;
+transition:0.3s;
 }
 
 nav a:hover{
-background:#38bdf8;
-color:black;
-}
-
-/* ===== HERO ===== */
-.hero{
-text-align:center;
-padding:50px 20px;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546');
-background-size:cover;
-background-position:center;
-}
-
-.hero h1{
-font-size:50px;
+opacity:1;
 color:#38bdf8;
-margin:0;
 }
 
-.hero p{
-max-width:600px;
-margin:auto;
-color:#cbd5e1;
-line-height:1.6;
-}
-
-.btn{
-margin-top:15px;
-padding:12px 25px;
-border:none;
-border-radius:10px;
-background:#38bdf8;
-color:black;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
-}
-
-/* ===== IMAGE SECTION ===== */
-.preview{
-text-align:center;
-padding:30px;
-}
-
-.preview img{
-width:90%;
-max-width:1000px;
-border-radius:15px;
-border:2px solid #38bdf8;
-box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
-
-/* ===== SECTIONS ===== */
-.section{
-padding:40px 20px;
-}
-
-.title{
-text-align:center;
-font-size:28px;
-margin-bottom:20px;
-color:#38bdf8;
+/* ===== LAYOUT ===== */
+.container{
+display:flex;
+gap:20px;
+padding:20px;
 }
 
 /* ===== PRODUCTS ===== */
 .products{
+flex:3;
+}
+
+.section-title{
+font-size:22px;
+margin:20px 0 10px;
+color:#38bdf8;
+}
+
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:15px;
 }
 
 .card{
-background:#111827;
+background:#0f172a;
 border:1px solid #1f2937;
 border-radius:15px;
 overflow:hidden;
@@ -143,12 +91,12 @@ border-color:#38bdf8;
 
 .card img{
 width:100%;
-height:160px;
+height:150px;
 object-fit:cover;
 }
 
 .card-body{
-padding:12px;
+padding:10px;
 text-align:center;
 }
 
@@ -161,31 +109,55 @@ margin:5px 0;
 width:100%;
 padding:10px;
 border:none;
+border-radius:10px;
 background:#22c55e;
 color:white;
 cursor:pointer;
-border-radius:8px;
-margin-top:10px;
 }
 
-/* ===== CART ===== */
+/* ===== CART (RIGHT SIDEBAR) ===== */
 .cart{
-position:fixed;
-right:15px;
-bottom:15px;
-width:260px;
-background:#0f172a;
+flex:1;
+background:#0b1220;
 border:1px solid #1f2937;
 border-radius:15px;
 padding:15px;
-max-height:300px;
-overflow:auto;
+height:fit-content;
+position:sticky;
+top:80px;
 }
 
-.cart-item{
+.cart h3{
+margin-top:0;
+color:#38bdf8;
+}
+
+.item{
 font-size:13px;
-border-bottom:1px solid #1f2937;
 padding:5px 0;
+border-bottom:1px solid #1f2937;
+}
+
+/* ===== HERO ===== */
+.hero{
+padding:60px 20px;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546');
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:45px;
+color:#38bdf8;
+}
+
+.hero p{
+color:#cbd5e1;
+max-width:600px;
+margin:auto;
 }
 
 /* ===== NOTIFY ===== */
@@ -197,7 +169,6 @@ background:#22c55e;
 padding:10px 15px;
 border-radius:10px;
 display:none;
-font-weight:bold;
 }
 
 </style>
@@ -205,37 +176,29 @@ font-weight:bold;
 
 <body>
 
-<!-- HEADER -->
 <header>
-<div class="logo">⚡ Pro Store Ultimate</div>
+<div class="logo">⚡ Pro Store</div>
 
 <nav>
-<a href="#home">الرئيسية</a>
 <a href="#phones">جوالات</a>
 <a href="#laptops">لابتوبات</a>
 <a href="#gaming">ألعاب</a>
-<a href="#preview">تصميم</a>
 </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-<h1>متجر احترافي متكامل</h1>
-<p>أفضل تجربة تسوق إلكترونية بتصميم حديث ومؤثرات قوية</p>
-<button class="btn">ابدأ التسوق</button>
+<section class="hero">
+<h1>متجر احترافي كامل</h1>
+<p>واجهة متجر حديثة مثل الشركات الكبرى + تصميم أنيق وسلة جانبية</p>
 </section>
 
-<!-- IMAGE PREVIEW -->
-<section class="preview" id="preview">
-<h2 class="title">📸 شكل الموقع النهائي</h2>
-<img src="/mnt/data/a_wide_high_resolution_screenshot_of_a_modern_ara.png">
-</section>
+<div class="container">
 
-<!-- PHONES -->
-<section class="section" id="phones">
-<div class="title">📱 الجوالات</div>
-
+<!-- PRODUCTS -->
 <div class="products">
+
+<h2 class="section-title" id="phones">📱 الجوالات</h2>
+
+<div class="grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
@@ -256,13 +219,10 @@ font-weight:bold;
 </div>
 
 </div>
-</section>
 
-<!-- LAPTOPS -->
-<section class="section" id="laptops">
-<div class="title">💻 اللابتوبات</div>
+<h2 class="section-title" id="laptops">💻 لابتوبات</h2>
 
-<div class="products">
+<div class="grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
@@ -283,43 +243,19 @@ font-weight:bold;
 </div>
 
 </div>
-</section>
-
-<!-- GAMING -->
-<section class="section" id="gaming">
-<div class="title">🎮 الألعاب</div>
-
-<div class="products">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
-<div class="card-body">
-<h3>PlayStation 5</h3>
-<div class="price">2200 ريال</div>
-<button onclick="add('PS5')">شراء</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1605901309584-818e25960a8f">
-<div class="card-body">
-<h3>Xbox</h3>
-<div class="price">2100 ريال</div>
-<button onclick="add('Xbox')">شراء</button>
-</div>
-</div>
 
 </div>
-</section>
 
 <!-- CART -->
 <div class="cart">
-<h4>🛒 السلة</h4>
+<h3>🛒 السلة</h3>
 <div id="list"></div>
 </div>
 
+</div>
+
 <!-- NOTIFY -->
-<div id="notify">تمت الإضافة 🛒</div>
+<div id="notify">تمت الإضافة</div>
 
 <script>
 
@@ -331,7 +267,7 @@ if(cart[item]) cart[item]++;
 else cart[item]=1;
 
 render();
-notify();
+show();
 
 }
 
@@ -342,14 +278,14 @@ list.innerHTML="";
 
 for(let i in cart){
 let div = document.createElement("div");
-div.className="cart-item";
+div.className="item";
 div.innerHTML = i + " × " + cart[i];
 list.appendChild(div);
 }
 
 }
 
-function notify(){
+function show(){
 let n = document.getElementById("notify");
 n.style.display="block";
 setTimeout(()=>n.style.display="none",1200);
