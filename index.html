@@ -1,13 +1,13 @@
+<!DOCTYPE html>
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pro Store</title>
+<title>Pro Store Ultimate</title>
 
 <style>
 
-/* ===== GLOBAL ===== */
-*{box-sizing:border-box}
+/* ===== BODY ===== */
 body{
 margin:0;
 font-family:Arial;
@@ -26,8 +26,8 @@ align-items:center;
 padding:15px 20px;
 background:rgba(15,23,42,0.95);
 backdrop-filter:blur(10px);
-z-index:1000;
 border-bottom:1px solid #1f2937;
+z-index:1000;
 }
 
 .logo{
@@ -45,10 +45,10 @@ flex-wrap:wrap;
 nav a{
 color:white;
 text-decoration:none;
-font-size:14px;
 padding:6px 10px;
 border-radius:8px;
 transition:0.3s;
+font-size:14px;
 }
 
 nav a:hover{
@@ -58,15 +58,9 @@ color:black;
 
 /* ===== HERO ===== */
 .hero{
-height:80vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 text-align:center;
-padding:20px;
-background:
-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+padding:50px 20px;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
 url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546');
 background-size:cover;
 background-position:center;
@@ -80,6 +74,7 @@ margin:0;
 
 .hero p{
 max-width:600px;
+margin:auto;
 color:#cbd5e1;
 line-height:1.6;
 }
@@ -98,6 +93,20 @@ transition:0.3s;
 
 .btn:hover{
 transform:scale(1.05);
+}
+
+/* ===== IMAGE SECTION ===== */
+.preview{
+text-align:center;
+padding:30px;
+}
+
+.preview img{
+width:90%;
+max-width:1000px;
+border-radius:15px;
+border:2px solid #38bdf8;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
 /* ===== SECTIONS ===== */
@@ -179,7 +188,7 @@ border-bottom:1px solid #1f2937;
 padding:5px 0;
 }
 
-/* ===== NOTIFICATION ===== */
+/* ===== NOTIFY ===== */
 #notify{
 position:fixed;
 top:20px;
@@ -191,15 +200,6 @@ display:none;
 font-weight:bold;
 }
 
-/* ===== FOOTER ===== */
-footer{
-text-align:center;
-padding:30px;
-color:#94a3b8;
-border-top:1px solid #1f2937;
-margin-top:40px;
-}
-
 </style>
 </head>
 
@@ -207,21 +207,28 @@ margin-top:40px;
 
 <!-- HEADER -->
 <header>
-<div class="logo">⚡ Pro Store</div>
+<div class="logo">⚡ Pro Store Ultimate</div>
 
 <nav>
 <a href="#home">الرئيسية</a>
 <a href="#phones">جوالات</a>
 <a href="#laptops">لابتوبات</a>
 <a href="#gaming">ألعاب</a>
+<a href="#preview">تصميم</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="home">
 <h1>متجر احترافي متكامل</h1>
-<p>تجربة تسوق حديثة — منتجات تقنية، ألعاب، وأجهزة عالية الجودة</p>
+<p>أفضل تجربة تسوق إلكترونية بتصميم حديث ومؤثرات قوية</p>
 <button class="btn">ابدأ التسوق</button>
+</section>
+
+<!-- IMAGE PREVIEW -->
+<section class="preview" id="preview">
+<h2 class="title">📸 شكل الموقع النهائي</h2>
+<img src="/mnt/data/a_wide_high_resolution_screenshot_of_a_modern_ara.png">
 </section>
 
 <!-- PHONES -->
@@ -233,7 +240,7 @@ margin-top:40px;
 <div class="card">
 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
 <div class="card-body">
-<h3>iPhone 15 Pro</h3>
+<h3>iPhone 15</h3>
 <div class="price">4500 ريال</div>
 <button onclick="add('iPhone 15')">شراء</button>
 </div>
@@ -296,7 +303,7 @@ margin-top:40px;
 <div class="card">
 <img src="https://images.unsplash.com/photo-1605901309584-818e25960a8f">
 <div class="card-body">
-<h3>Xbox Series X</h3>
+<h3>Xbox</h3>
 <div class="price">2100 ريال</div>
 <button onclick="add('Xbox')">شراء</button>
 </div>
@@ -313,11 +320,6 @@ margin-top:40px;
 
 <!-- NOTIFY -->
 <div id="notify">تمت الإضافة 🛒</div>
-
-<!-- FOOTER -->
-<footer>
-© 2026 Pro Store - جميع الحقوق محفوظة
-</footer>
 
 <script>
 
